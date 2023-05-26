@@ -1,34 +1,55 @@
-import React from "react";
-import "./Card.css";
+import React from 'react'
+import './Card.css'
+import PropsTypes from 'prop-types'
 
-const Card = ({ children }) => (
+const Card = ({children}) => (
   <section className="Card card">
     <div className="card-content">{children}</div>
   </section>
-);
+)
 
-const Avatar = ({ photoUrl, altText }) => (
+Card.propTypes = {
+  children: PropsTypes.node.isRequired,
+}
+
+const Avatar = ({photoUrl, altText}) => (
   <img className="card-avatar" src={photoUrl} alt={altText} />
-);
+) 
 
-const Title = ({ mainTitle, subTitle }) => (
+Avatar.propTypes = {
+  photoUrl: PropsTypes.string.isRequired,
+  altText: PropsTypes.string.isRequired,
+}
+
+const Title = ({mainTitle, subTitle}) => (
   <div className="card-title">
     <div>{mainTitle}</div>
     <div className="card-subtitle">{subTitle}</div>
   </div>
-);
+)
 
-const Info = ({ icon, children, desc = icon }) => (
+Title.propTypes = {
+  mainTitle: PropsTypes.string.isRequired,
+  subTitle: PropsTypes.string.isRequired,
+}
+
+const Info = ({icon, children, desc = icon}) => (
   <div className="card-info">
     <i className="material-icons" title={desc}>
       {icon}
     </i>
     <span>{children}</span>
   </div>
-);
+)
 
-Card.Avatar = Avatar;
-Card.Title = Title;
-Card.Info = Info;
+Info.propTypes = {
+  icon: PropsTypes.string.isRequired,
+  children: PropsTypes.node.isRequired,
+  desc: PropsTypes.string,
+}
 
-export default Card;
+Card.Avatar = Avatar
+Card.Title = Title
+Card.Info = Info
+
+export default Card
